@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冰雪奇缘 - 3D 粒子交互系统</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- MediaPipe Hands -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="container"></div>
+    
+    <!-- 隐藏的视频元素，用于输入 -->
+    <video class="input_video" style="display: none;"></video>
+
+    <!-- UI 面板 -->
+    <div class="ui-panel">
+        <h1>❄️ 冰雪工坊 ❄️</h1>
+        <p>双手张合控制魔法</p>
+        <div class="model-selector">
+            <button class="model-btn active" data-model="tree">🎄 圣诞树</button>
+            <button class="model-btn" data-model="snowflake">❄️ 雪花</button>
+            <button class="model-btn" data-model="santa">🎅 圣诞老人</button>
+            <button class="model-btn" data-model="sock">🧦 圣诞袜</button>
+            <button class="model-btn" data-model="bell">🔔 铃铛</button>
+        </div>
+        <div class="status-indicator">
+            <span id="hand-status">等待摄像头...</span>
+        </div>
+    </div>
+
+    <button id="fullscreen-btn">⛶ 全屏体验</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
