@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [macos-latest]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build and publish
+      run: npm run release
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/*
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+        name: Release ${{ github.ref_name }}
+        body: |
+          ## Christmas Particles ${{ github.ref_name }}
+          
+          ### 新功能
+          - 基于 Three.js 和 MediaPipe 的 3D 粒子交互系统
+          - 支持手势控制粒子聚合与扩散
+          - 包含多种圣诞主题粒子模型
+          
+          ### 下载
+          - Mac: Christmas Particles-${{ github.ref_name }}.dmg
+          
+          ### 系统要求
+          - macOS 10.14 或更高版本
+          - 摄像头权限（用于手势识别）
+          
+          ### 使用方法
+          1. 下载并安装应用
+          2. 允许摄像头权限
+          3. 张开手掌控制粒子扩散，握紧拳头控制粒子聚合
+          
+          Merry Christmas! 🎄
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

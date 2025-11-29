@@ -1,105 +1,82 @@
-# ❄️ 冰雪奇缘 - 3D 粒子交互系统
+# 圣诞粒子 Electron 应用
 
-一个基于 Three.js 和 MediaPipe 的交互式圣诞主题 3D 粒子系统，通过手势控制实现粒子的聚合与扩散，创造魔法般的视觉体验。
+这是一个基于圣诞粒子网页应用构建的Electron桌面应用，支持Mac、Windows和Linux平台。
 
-## ✨ 特性
+## 快速开始
 
-- 🎯 **手势交互** - 使用 MediaPipe 手部追踪技术，通过双手张合控制粒子形态
-- 🎄 **多种模型** - 包含圣诞树、雪花、圣诞老人、圣诞袜和铃铛等多种粒子模型
-- 🌟 **粒子特效** - 15,000 个粒子组成的流畅动画效果
-- 📱 **响应式设计** - 适配桌面和移动设备
-- 🎨 **现代 UI** - 毛玻璃效果的控制面板和优雅的交互体验
-- 🖥️ **全屏体验** - 支持全屏模式，沉浸式体验
+### 下载应用
 
-## 🚀 快速开始
+- [Mac应用下载链接](https://github.com/yourusername/christmas-particles/releases/latest/download/Christmas-Particles-1.0.0.dmg)
+- [Windows应用下载链接](https://github.com/yourusername/christmas-particles/releases/latest/download/Christmas-Particles-Setup-1.0.0.exe)
+- [Linux应用下载链接](https://github.com/yourusername/christmas-particles/releases/latest/download/christmas-particles-1.0.0.AppImage)
 
 ### 在线体验
 
-直接打开 `index.html` 文件即可在浏览器中体验。
+访问 [圣诞粒子网页版](./christmas-particles/index.html) 体验在线版本。
 
 ### 本地运行
 
-1. 克隆或下载项目
-2. 使用本地服务器运行（推荐）：
-
 ```bash
-# 使用 Python
-python -m http.server 8000
+# 克隆仓库
+git clone https://github.com/yourusername/christmas-particles.git
+cd christmas-particles
 
-# 或使用 Node.js
-npx serve .
+# 安装依赖
+npm install
 
-# 或使用 PHP
-php -S localhost:8000
+# 启动应用
+npm start
 ```
 
-3. 访问 `http://localhost:8000`
+## 构建应用
 
-## 🎮 使用方法
+```bash
+# 构建Mac应用
+npm run build-mac
 
-1. **允许摄像头权限** - 首次打开需要允许浏览器访问摄像头
-2. **手势控制** - 将手放在摄像头前：
-   - 张开手掌 → 粒子扩散
-   - 握紧拳头 → 粒子聚合
-3. **切换模型** - 点击左侧面板的按钮切换不同的粒子模型
-4. **全屏模式** - 点击右下角的全屏按钮获得沉浸式体验
+# 构建Windows应用
+npm run build-win
 
-## 🛠️ 技术栈
+# 构建Linux应用
+npm run build-linux
 
-- **Three.js** - 3D 图形渲染
-- **MediaPipe Hands** - 手部追踪和手势识别
-- **原生 JavaScript** - 核心逻辑实现
-- **CSS3** - 现代化 UI 设计
+# 构建所有平台
+npm run build-all
+```
 
-## 📁 项目结构
+## 发布应用
+
+```bash
+# 发布新版本
+./release.sh v1.0.0
+```
+
+## 项目结构
 
 ```
 christmas-particles/
-├── index.html      # 主页面
-├── script.js       # 核心逻辑和粒子系统
-├── style.css       # 样式文件
-└── README.md       # 项目说明
+├── christmas-particles/         # 网页版应用目录
+│   ├── index.html              # 主页面
+│   ├── style.css               # 样式文件
+│   ├── script.js               # 脚本文件
+│   └── assets/                 # 资源文件
+├── main.js                     # Electron主进程文件
+├── package.json                # 项目配置和依赖
+├── assets/                     # 应用图标和资源
+│   ├── icon.icns               # Mac应用图标
+│   └── icon.ico                # Windows应用图标
+├── .github/workflows/          # GitHub Actions工作流
+│   ├── ci.yml                  # 持续集成工作流
+│   └── release.yml             # 发布工作流
+├── BUILD.md                    # 构建和发布详细文档
+├── release.sh                  # 发布脚本
+└── README.md                   # 项目说明文档
 ```
 
-## 🎯 核心功能
+## 贡献
 
-### 粒子系统
+欢迎提交Issue和Pull Request来改进这个项目！
 
-- 使用 15,000 个粒子点构建 3D 模型
-- 实时计算粒子位置和动画
-- 支持多种预设形状的动态切换
+## 许可证
 
-### 手势识别
-
-- 基于 MediaPipe 的手部关键点检测
-- 计算手掌张开程度控制粒子扩散
-- 实时响应手势变化
-
-### 模型算法
-
-- **圣诞树** - 多层圆锥结构，包含树干和树冠
-- **雪花** - 基于分形算法的六边形晶体结构
-- **圣诞老人** - 优化身体结构，包含头部、身体、胡子和帽子
-- **圣诞袜** - 袜子形状的粒子分布
-- **铃铛** - 经典铃铛造型
-
-## 🌟 浏览器兼容性
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-需要支持 WebRTC 和 WebGL 的现代浏览器。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 📄 许可证
-
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
-
-## 🎄 圣诞快乐！
-
-愿这个小小的项目为您带来节日的欢乐和魔法般的体验！
+本项目采用MIT许可证，详见 [LICENSE](LICENSE) 文件。
